@@ -6,6 +6,7 @@ class nuevoIngreso{
 }
 const arrayIngresos=[];
 
+localStorage.setItem("totalIng", 0);
 
 class nuevoGasto{
     constructor(gasto, categoria){
@@ -15,6 +16,8 @@ class nuevoGasto{
 }
 
 const arrayGastos= [];
+
+localStorage.setItem("totalGas", 0);
 
 //Ingresos
 
@@ -47,7 +50,8 @@ let ingresa= new nuevoIngreso(ingreso.value, categoriaIngreso.value);
 arrayIngresos.push(ingresa);
 console.log(arrayIngresos);
 totalIngresos= arrayIngresos.reduce((acumulador, item) => acumulador + item.ingreso, 0);
-console.log(totalIngresos); 
+localStorage.setItem("totalIng", totalIngresos)
+saldoFinal();
 formIngreso.reset();
 })
 
@@ -82,23 +86,33 @@ let ingresoGasto= new nuevoGasto(gasto.value, categoriaGasto.value);
 arrayGastos.push(ingresoGasto);
 console.log(arrayGastos);
 const totalGastos = arrayGastos.reduce ((acumulador, item) => acumulador + item.gasto, 0);
-console.log(totalGastos);
+localStorage.setItem("totalGas", totalGastos);
+saldoFinal();
 formGastos.reset();
 })
 
 //Saldo Actual
 
-
-
 const divCentral = document.getElementById("divCentral");
-
 const saldoIndex= document.createElement("div");
+
 saldoIndex.innerHTML= `
                    <div>
-                      <h2>Saldo actual</h2>
+                      <h2>Saldo Actual</h2>
                    </div>
                    <div>
-                      <p>$</p>
+                      <p id ="sf">$0</p>
                    </div>
                           `
-divCentral.appendChild(saldoIndex); 
+divCentral.appendChild(saldoIndex);
+const parrafo = document.getElementById("sf");
+
+const saldoFinal = () =>{
+    let valor1= parseInt(localStorage.getItem("totalIng"));
+    let valor2 = parseInt(localStorage.getItem("totalGas"));
+    const saldo = (a,b) => a-b;
+    let saldoActual = saldo (valor1, valor2);
+    console.log(saldoActual);
+    parrafo.innerHTML= `$ ${saldoActual}`
+}
+ 
