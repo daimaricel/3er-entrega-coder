@@ -31,7 +31,7 @@ formIngreso.innerHTML = `
 <label for="category">Categoría</label>
 <select name="category" id="category">
     <option value="Salario">Salario</option>
-    <option value="Horas extras">Horas Extra</option>
+    <option value="Horas-extra">Horas Extra</option>
     <option value="Intereses">Intereses</option>
     <option value="Otra">Otra</option>
 </select>  
@@ -49,6 +49,7 @@ let categoriaIngreso= document.getElementById("category");
 let ingresa= new nuevoIngreso(ingreso.value, categoriaIngreso.value);
 arrayIngresos.push(ingresa);
 console.log(arrayIngresos);
+mostrarItemI();
 totalIngresos= arrayIngresos.reduce((acumulador, item) => acumulador + item.ingreso, 0);
 localStorage.setItem("totalIng", totalIngresos)
 saldoFinal();
@@ -69,7 +70,7 @@ formGastos.innerHTML= `
     <option value="Alimentos">Alimentos</option>
     <option value="Servicios">Servicios</option>
     <option value="Salud">Salud</option>
-    <option value="Tarjeta de crédito">Tarjeta de crédito</option>
+    <option value="Tarjetas">Tarjetas</option>
     <option value="Otra">Otra</option>
 </select>  
 <button id="ingresoG">Guardar</button> <button>Restablecer</button> 
@@ -116,3 +117,17 @@ const saldoFinal = () =>{
     parrafo.innerHTML= `$ ${saldoActual}`
 }
  
+//Listas
+
+const mostrarItemI = () =>{
+    arrayIngresos.forEach(nuevoIngreso =>{
+    let listaI = document.getElementById("listaI");
+    const liI = document.createElement("li");
+    liI.innerHTML = `
+    <img class= "estiloLista" src="../images/${nuevoIngreso.categoria}.png" alt="${nuevoIngreso.categoria}">
+    <p>Monto: $ ${nuevoIngreso.ingreso}, Categoría: ${nuevoIngreso.categoria}</p>
+    `
+    listaI.appendChild(liI);
+    }
+    )}
+
