@@ -1,8 +1,8 @@
 class nuevoIngreso {
-  constructor(ingreso, categoria) {
+  constructor(ingreso, categoria, id) {
     this.ingreso = parseInt(ingreso);
     this.categoria = categoria;
-    this.id = id();
+    this.id = id;
   }
 }
 let arrayIngresos = [];
@@ -11,29 +11,29 @@ if (localStorage.getItem("listaIngresos")) {
   arrayIngresos = JSON.parse(localStorage.getItem("listaIngresos"));
 }
 
-function id() {
+/* function id() {
   let contador = arrayIngresos.length;
   let id = contador + 1;
   return id;
-}
+} */
 
 //localStorage.setItem("totalIng", 0);
 
 class nuevoGasto {
-  constructor(gasto, categoria) {
+  constructor(gasto, categoria, id) {
     this.gasto = parseInt(gasto);
     this.categoria = categoria;
-    this.id = idG();
+    this.id = id;
   }
 }
 
 const arrayGastos = [];
 
-const idG = () => {
+/* const idG = () => {
   let contador = arrayGastos.length;
   let id = contador + 1;
   return id;
-};
+}; */
 
 //localStorage.setItem("totalGas", 0);
 
@@ -117,7 +117,9 @@ formIngreso.innerHTML = `
     <option value="Horas-extra">Horas Extra</option>
     <option value="Intereses">Intereses</option>
     <option value="Otra">Otra</option>
-</select>  
+</select> 
+<label for ="idI">ID</label>
+<input id="idI" type= "text"> 
 <button id="ingresoI">Guardar</button>  
 </fieldset>  
 `;
@@ -130,10 +132,10 @@ botonIngreso.onclick =
     e.preventDefault();
     let ingreso = document.getElementById("montoI");
     let categoriaIngreso = document.getElementById("category");
-    let ingresa = new nuevoIngreso(ingreso.value, categoriaIngreso.value);
+    let idI = document.getElementById("idI");
+    let ingresa = new nuevoIngreso(ingreso.value, categoriaIngreso.value, idI.value);
     arrayIngresos.push(ingresa);
     localStorage.setItem("listaIngresos", JSON.stringify(arrayIngresos));
-    console.log(arrayIngresos);
     mostrarItemI();
     /* totalIngresos= arrayIngresos.reduce((acumulador, item) => acumulador + item.ingreso, 0);
 localStorage.setItem("totalIng", totalIngresos)
@@ -158,6 +160,8 @@ formGastos.innerHTML = `
     <option value="Tarjetas">Tarjetas</option>
     <option value="Otra">Otra</option>
 </select>  
+<label for ="idG">ID</label>
+<input id="idG" type= "text"> 
 <button id="ingresoG">Guardar</button>  
 </fieldset>  
 `;
@@ -170,15 +174,16 @@ botonGastos.onclick =
     e.preventDefault();
     let gasto = document.getElementById("montoG");
     let categoriaGasto = document.getElementById("categoryG");
-    let ingresoGasto = new nuevoGasto(gasto.value, categoriaGasto.value);
+    let id= document.getElementById("idG")
+    let ingresoGasto = new nuevoGasto(gasto.value, categoriaGasto.value, id.value);
     arrayGastos.push(ingresoGasto);
     console.log(arrayGastos);
     mostrarItemG();
-    const totalGastos = arrayGastos.reduce(
+    /* const totalGastos = arrayGastos.reduce(
       (acumulador, item) => acumulador + item.gasto,
       0
-    );
-    localStorage.setItem("totalGas", totalGastos);
+    ); */
+   /*  localStorage.setItem("totalGas", totalGastos); */
     saldoFinal();
     formGastos.reset();
   });
@@ -229,7 +234,8 @@ const mostrarItemI = () => {
 
 const borrarItemI = (id) => {
   localStorage.getItem("listaIngresos");
-  const item = arrayIngresos.find((item) => nuevoIngreso.id === id);
+  const item = arrayIngresos.find((el) => el.id == id);
+  console.log(item);
   const indice = arrayIngresos.indexOf(item);
   arrayIngresos.splice(indice, 1);
   mostrarItemI();
