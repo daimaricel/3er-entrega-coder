@@ -1,3 +1,5 @@
+//Constructor 1
+
 class nuevoIngreso {
   constructor(ingreso, categoria, id) {
     this.ingreso = parseInt(ingreso);
@@ -11,13 +13,7 @@ if (localStorage.getItem("listaIngresos")) {
   arrayIngresos = JSON.parse(localStorage.getItem("listaIngresos"));
 }
 
-/* function id() {
-  let contador = arrayIngresos.length;
-  let id = contador + 1;
-  return id;
-} */
-
-//localStorage.setItem("totalIng", 0);
+//Constructos 2
 
 class nuevoGasto {
   constructor(gasto, categoria, id) {
@@ -33,14 +29,6 @@ if (localStorage.getItem("listaGastos")) {
   arrayGastos = JSON.parse(localStorage.getItem("listaGastos"));
 }
 
-
-/* const idG = () => {
-  let contador = arrayGastos.length;
-  let id = contador + 1;
-  return id;
-}; */
-
-//localStorage.setItem("totalGas", 0);
 
 //HTML en JS
 
@@ -107,6 +95,7 @@ section2.innerHTML = `
     </div>
 
 `;
+
 //Ingresos
 
 const divIngresos = document.getElementById("divIngresos");
@@ -142,9 +131,7 @@ botonIngreso.onclick =
     arrayIngresos.push(ingresa);
     localStorage.setItem("listaIngresos", JSON.stringify(arrayIngresos));
     mostrarItemI();
-    /* totalIngresos= arrayIngresos.reduce((acumulador, item) => acumulador + item.ingreso, 0);
-localStorage.setItem("totalIng", totalIngresos)
-saldoFinal(); */
+    saldoFinal();
     formIngreso.reset();
   });
 
@@ -184,7 +171,7 @@ botonGastos.onclick =
     arrayGastos.push(ingresoGasto);
     localStorage.setItem("listaGastos", JSON.stringify(arrayGastos));
     mostrarItemG();
-   // saldoFinal();
+    saldoFinal();
     formGastos.reset();
   });
 
@@ -205,11 +192,29 @@ divCentral.appendChild(saldoIndex);
 const parrafo = document.getElementById("sf");
 
 const saldoFinal = () => {
-  /* let valor1 = parseInt(localStorage.getItem("totalIng"));
-  let valor2 = parseInt(localStorage.getItem("totalGas"));
+
+  localStorage.getItem("listaIngresos");
+ /*  let totalI=arrayIngresos.map((el) =>el.ingreso);
+  console.log(totalI);
+  let totalIngresos =totalI.reduce((valorAnterior, valorActual) => {
+    return valorAnterior + valorActual;
+  }, 0);
+
+  let totalG = arrayGastos.map((el =>el.gasto));
+  let totalGastos= totalG.reduce((valorAnterior, valorActual) => {
+    return valorAnterior + valorActual;
+  }, 0); */
+
+  let totalIngresos = arrayIngresos.reduce((valorAnterior, valorActual) => {
+    return valorAnterior + valorActual.ingreso;
+  }, 0);
+
+  let totalGastos = arrayGastos.reduce((valorAnterior, valorActual) => {
+    return valorAnterior + valorActual.gasto;
+  }, 0);
   const saldo = (a, b) => a - b;
-  let saldoActual = saldo(valor1, valor2); */
-  
+  let saldoActual = saldo(totalIngresos, totalGastos);
+
   console.log(saldoActual);
   parrafo.innerHTML = `$ ${saldoActual}`;
 };
@@ -239,6 +244,7 @@ const borrarItemI = (id) => {
   console.log(item);
   const indice = arrayIngresos.indexOf(item);
   arrayIngresos.splice(indice, 1);
+  saldoFinal();
   mostrarItemI();
   localStorage.setItem("listaIngresos", JSON.stringify(arrayIngresos));
 };
@@ -268,7 +274,7 @@ const borrarItemG = (id) => {
   const item = arrayGastos.find((el) => el.id == id);
   const indice = arrayGastos.indexOf(item);
   arrayGastos.splice(indice, 1);
-  /* saldoFinal(); */
+  saldoFinal(); 
   mostrarItemG();
   localStorage.setItem("listaGastos", JSON.stringify(arrayIngresos));
 };
