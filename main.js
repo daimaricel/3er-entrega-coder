@@ -27,7 +27,12 @@ class nuevoGasto {
   }
 }
 
-const arrayGastos = [];
+let arrayGastos = [];
+
+if (localStorage.getItem("listaGastos")) {
+  arrayGastos = JSON.parse(localStorage.getItem("listaGastos"));
+}
+
 
 /* const idG = () => {
   let contador = arrayGastos.length;
@@ -177,14 +182,9 @@ botonGastos.onclick =
     let id= document.getElementById("idG")
     let ingresoGasto = new nuevoGasto(gasto.value, categoriaGasto.value, id.value);
     arrayGastos.push(ingresoGasto);
-    console.log(arrayGastos);
+    localStorage.setItem("listaGastos", JSON.stringify(arrayGastos));
     mostrarItemG();
-    /* const totalGastos = arrayGastos.reduce(
-      (acumulador, item) => acumulador + item.gasto,
-      0
-    ); */
-   /*  localStorage.setItem("totalGas", totalGastos); */
-    saldoFinal();
+   // saldoFinal();
     formGastos.reset();
   });
 
@@ -205,10 +205,11 @@ divCentral.appendChild(saldoIndex);
 const parrafo = document.getElementById("sf");
 
 const saldoFinal = () => {
-  let valor1 = parseInt(localStorage.getItem("totalIng"));
+  /* let valor1 = parseInt(localStorage.getItem("totalIng"));
   let valor2 = parseInt(localStorage.getItem("totalGas"));
   const saldo = (a, b) => a - b;
-  let saldoActual = saldo(valor1, valor2);
+  let saldoActual = saldo(valor1, valor2); */
+  
   console.log(saldoActual);
   parrafo.innerHTML = `$ ${saldoActual}`;
 };
@@ -263,9 +264,11 @@ const mostrarItemG = () => {
 };
 
 const borrarItemG = (id) => {
-  const item = arrayGastos.find((item) => nuevoGasto.id === id);
+  localStorage.getItem("listaGastos");
+  const item = arrayGastos.find((el) => el.id == id);
   const indice = arrayGastos.indexOf(item);
   arrayGastos.splice(indice, 1);
-  saldoFinal();
+  /* saldoFinal(); */
   mostrarItemG();
+  localStorage.setItem("listaGastos", JSON.stringify(arrayIngresos));
 };
