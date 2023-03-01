@@ -1,0 +1,68 @@
+.estiloLista {
+height: 1.5rem;
+width: 1.5rem;
+}
+
+.billetera{
+    height: 5rem;
+    width: 5rem;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFD166;
+    margin: 1 rem;
+    padding: 1rem;
+}
+
+#divCentral{
+    background-color: #EF476F;
+    display: flex;
+    justify-content: center;
+    width: 450px;
+    margin-top: 2rem;
+    padding-top: 1rem;
+}
+
+#sf{
+    text-align: center;
+    background-color: antiquewhite;
+    font-weight: bolder;
+}
+
+.forms{
+    display: flex;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+   
+}
+
+.forms div{
+    background-color: #118AB2;
+    border: black 1px solid;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    margin-left: 1rem;
+}
+
+#content{
+    padding-top: 1rem;
+}
+
+.accordion-header{
+    background-color: #06D6A0;
+}
+
+.listas{
+    display: flex;
+    flex-direction: row;
+}
+
+.bote{
+    height: 1rem;
+    width: 1rem;
+    align-items: flex-end;
+}
