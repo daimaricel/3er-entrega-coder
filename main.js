@@ -12,18 +12,9 @@ let arrayIngresos;
 let arrayIngresosJS =  JSON.parse(localStorage.getItem("listaIngresos"));
 if (arrayIngresosJS){
   arrayIngresos=arrayIngresosJS;
-
 }else{
   arrayIngresos=[]
 }
-
-
-
-/* if (localStorage.getItem("listaIngresos")) {
-  arrayIngresos = JSON.parse(localStorage.getItem("listaIngresos"));
-  
-} */
-
 
 //Constructos 2
 
@@ -40,6 +31,7 @@ let arrayGastos = [];
 if (localStorage.getItem("listaGastos")) {
   arrayGastos = JSON.parse(localStorage.getItem("listaGastos"));
 }
+
 
 
 //HTML en JS
@@ -144,8 +136,8 @@ botonIngreso.onclick =
     let idI = document.getElementById("idI");
     let ingresa = new nuevoIngreso(ingreso.value, categoriaIngreso.value, idI.value);
     arrayIngresos.push(ingresa);
-    localStorage.setItem("listaIngresos", JSON.stringify(arrayIngresos));
     mostrarItemI();
+    localStorage.setItem("listaIngresos", JSON.stringify(arrayIngresos));
     saldoFinal();
     formIngreso.reset();
   });
@@ -181,7 +173,7 @@ botonGastos.onclick =
     e.preventDefault();
     let gasto = document.getElementById("montoG");
     let categoriaGasto = document.getElementById("categoryG");
-    let id= document.getElementById("idG")
+    let id= document.getElementById("idG");
     let ingresoGasto = new nuevoGasto(gasto.value, categoriaGasto.value, id.value);
     arrayGastos.push(ingresoGasto);
     localStorage.setItem("listaGastos", JSON.stringify(arrayGastos));
@@ -229,8 +221,25 @@ const saldoFinal = () => {
   parrafo.innerHTML = `$ ${saldoActual}`;
 };
 
-//Listas
 let listaI = document.getElementById("listaI");
+
+   arrayIngresos.forEach((nuevoIngreso) => {
+  const liI = document.createElement("li");
+  liI.innerHTML = `
+<div class= "listas"><img class= "estiloLista" src="../images/${nuevoIngreso.categoria}.png" alt="${nuevoIngreso.categoria}">
+<p>Monto: $ ${nuevoIngreso.ingreso}, Categoría: ${nuevoIngreso.categoria}</p><button><img class= "bote" id="eliminar${nuevoIngreso.id}" src="images/bote-de-basura.png" alt="eliminar"></button></div>
+`;
+  listaI.appendChild(liI);
+
+  const elimino = document.getElementById(`eliminar${nuevoIngreso.id}`);
+  elimino.addEventListener("click", () => {
+    borrarItemI(nuevoIngreso.id);
+  });
+});
+
+
+//Listas
+
  const mostrarItemI = () => {
   (listaI.innerHTML = ""),
     arrayIngresos.forEach((nuevoIngreso) => {
@@ -262,6 +271,21 @@ const borrarItemI = (id) => {
 
 
 let listaG = document.getElementById("listaG");
+
+arrayGastos.forEach((nuevoGasto) => {
+  const liG = document.createElement("li");
+  liG.innerHTML = `
+<div class= "listas"><img class= "estiloLista" src="../images/${nuevoGasto.categoria}.png" alt="${nuevoGasto.categoria}">
+<p>Monto: $ ${nuevoGasto.gasto}, Categoría: ${nuevoGasto.categoria}</p><button><img class= "bote" id="eliminar${nuevoGasto.id}" src="images/bote-de-basura.png" alt="eliminar"></button></div>
+`;
+  listaG.appendChild(liG);
+  const elimino = document.getElementById(`eliminar${nuevoGasto.id}`);
+  elimino.addEventListener("click", () => {
+    borrarItemG(nuevoGasto.id);
+  });
+});
+
+
 const mostrarItemG = () => {
   (listaG.innerHTML = ""),
     arrayGastos.forEach((nuevoGasto) => {
