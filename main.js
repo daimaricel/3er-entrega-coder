@@ -7,11 +7,23 @@ class nuevoIngreso {
     this.id = id;
   }
 }
-let arrayIngresos = [];
 
-if (localStorage.getItem("listaIngresos")) {
-  arrayIngresos = JSON.parse(localStorage.getItem("listaIngresos"));
+let arrayIngresos;
+let arrayIngresosJS =  JSON.parse(localStorage.getItem("listaIngresos"));
+if (arrayIngresosJS){
+  arrayIngresos=arrayIngresosJS;
+
+}else{
+  arrayIngresos=[]
 }
+
+
+
+/* if (localStorage.getItem("listaIngresos")) {
+  arrayIngresos = JSON.parse(localStorage.getItem("listaIngresos"));
+  
+} */
+
 
 //Constructos 2
 
@@ -96,6 +108,8 @@ section2.innerHTML = `
 
 `;
 
+ 
+
 //Ingresos
 
 const divIngresos = document.getElementById("divIngresos");
@@ -104,7 +118,7 @@ formIngreso.innerHTML = `
 <fieldset>
     <h3>Nuevo ingreso</h3>
 <label for="montoI">Monto $</label>
-<input id= "montoI" type="text">   
+<input id= "montoI" type="text" required>   
 <label for="category">Categoría</label>
 <select name="category" id="category">
     <option value="Salario">Salario</option>
@@ -113,11 +127,12 @@ formIngreso.innerHTML = `
     <option value="Otra">Otra</option>
 </select> 
 <label for ="idI">ID</label>
-<input id="idI" type= "text"> 
+<input id="idI" type= "text" placeHolder="Ingrese Id a elección" required> 
 <button id="ingresoI">Guardar</button>  
 </fieldset>  
 `;
 divIngresos.appendChild(formIngreso);
+
 
 let botonIngreso = document.getElementById("ingresoI");
 botonIngreso.onclick =
@@ -153,7 +168,7 @@ formGastos.innerHTML = `
     <option value="Otra">Otra</option>
 </select>  
 <label for ="idG">ID</label>
-<input id="idG" type= "text"> 
+<input id="idG" type= "text" placeHolder="Ingrese Id a elección"> 
 <button id="ingresoG">Guardar</button>  
 </fieldset>  
 `;
@@ -176,10 +191,13 @@ botonGastos.onclick =
   });
 
 //Saldo Actual
-let saldoActual
-let saldoLs = localStorage.getItem("saldo");
-if (saldoLs) {
-  saldoActual=saldoLs
+let saldoActual;
+let saldoActualLs= localStorage.getItem("saldo");
+
+if(saldoActualLs){
+  saldoActual= saldoActualLs;
+}else{
+  saldoActual=0
 }
 
 const divCentral = document.getElementById("divCentral");
@@ -190,7 +208,7 @@ saldoIndex.innerHTML = `
                       <h2>Saldo Actual</h2>
                    </div>
                    <div>
-                      <p id ="sf">$0</p>
+                      <p id ="sf">$ ${saldoActual}</p>
                    </div>
                           `;
 divCentral.appendChild(saldoIndex);
@@ -207,13 +225,13 @@ const saldoFinal = () => {
   }, 0);
   const saldo = (a, b) => a - b;
   let saldoActual = saldo(totalIngresos, totalGastos);
-  parrafo.innerHTML = `$ ${saldoActual}`;
   localStorage.setItem ("saldo", saldoActual);
+  parrafo.innerHTML = `$ ${saldoActual}`;
 };
 
 //Listas
 let listaI = document.getElementById("listaI");
-const mostrarItemI = () => {
+ const mostrarItemI = () => {
   (listaI.innerHTML = ""),
     arrayIngresos.forEach((nuevoIngreso) => {
       const liI = document.createElement("li");
@@ -228,7 +246,7 @@ const mostrarItemI = () => {
         borrarItemI(nuevoIngreso.id);
       });
     });
-};
+}; 
 
 const borrarItemI = (id) => {
   localStorage.getItem("listaIngresos");
@@ -241,7 +259,6 @@ const borrarItemI = (id) => {
   localStorage.setItem("listaIngresos", JSON.stringify(arrayIngresos));
 };
 
-  //saldoFinal();
 
 
 let listaG = document.getElementById("listaG");
