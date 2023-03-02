@@ -176,6 +176,11 @@ botonGastos.onclick =
   });
 
 //Saldo Actual
+let saldoActual
+let saldoLs = localStorage.getItem("saldo");
+if (saldoLs) {
+  saldoActual=saldoLs
+}
 
 const divCentral = document.getElementById("divCentral");
 const saldoIndex = document.createElement("div");
@@ -192,31 +197,18 @@ divCentral.appendChild(saldoIndex);
 const parrafo = document.getElementById("sf");
 
 const saldoFinal = () => {
-
   localStorage.getItem("listaIngresos");
- /*  let totalI=arrayIngresos.map((el) =>el.ingreso);
-  console.log(totalI);
-  let totalIngresos =totalI.reduce((valorAnterior, valorActual) => {
-    return valorAnterior + valorActual;
-  }, 0);
-
-  let totalG = arrayGastos.map((el =>el.gasto));
-  let totalGastos= totalG.reduce((valorAnterior, valorActual) => {
-    return valorAnterior + valorActual;
-  }, 0); */
-
+  localStorage.getItem("listaGastos");
   let totalIngresos = arrayIngresos.reduce((valorAnterior, valorActual) => {
     return valorAnterior + valorActual.ingreso;
   }, 0);
-
   let totalGastos = arrayGastos.reduce((valorAnterior, valorActual) => {
     return valorAnterior + valorActual.gasto;
   }, 0);
   const saldo = (a, b) => a - b;
   let saldoActual = saldo(totalIngresos, totalGastos);
-
-  console.log(saldoActual);
   parrafo.innerHTML = `$ ${saldoActual}`;
+  localStorage.setItem ("saldo", saldoActual);
 };
 
 //Listas
