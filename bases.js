@@ -41,8 +41,8 @@ class nuevoIngreso {
   <div class="container" id="divCentral"></div>
   
   <div class="container forms">
-    <div class="container" id="divIngresos"></div>
-    <div class="container" id="divGastos"></div>
+    <div class="container style" id="divIngresos"></div>
+    <div class="container style" id="divGastos"></div>
   </div>
   `;
   const section2 = document.getElementById("content2");

@@ -6,17 +6,17 @@ const formIngreso = document.createElement("form");
 formIngreso.innerHTML = `
 <fieldset>
     <h3>Nuevo ingreso</h3>
-<label for="montoI">Monto $</label>
-<input id= "montoI" type="text" required>   
-<label for="category">Categoría</label>
+<div><label for="montoI">Monto $</label>
+<input id= "montoI" type="text" required></div>  
+<div><label for="category">Categoría</label>
 <select name="category" id="category">
     <option value="Salario">Salario</option>
     <option value="Horas-extra">Horas Extra</option>
     <option value="Intereses">Intereses</option>
     <option value="Otra">Otra</option>
-</select> 
-<label for ="idI">ID</label>
-<input id="idI" type= "text" placeHolder="Ingrese Id a elección" required> 
+</select></div> 
+<div><label for ="idI">ID</label>
+<input id="idI" type= "text" placeHolder="Ingrese Id a elección" required></div> 
 <button id="ingresoI">Guardar</button>  
 </fieldset>  
 `;
@@ -31,6 +31,13 @@ botonIngreso.onclick =
     let ingreso = document.getElementById("montoI");
     let categoriaIngreso = document.getElementById("category");
     let idI = document.getElementById("idI");
+    let check= arrayIngresos.some((el) => el.id == idI.value);
+    console.log(check);
+    if(check == true){
+      const myModal = new bootstrap.Modal(document.getElementById("modal-id"));
+      myModal.show(myModal);
+      return
+    }
     let ingresa = new nuevoIngreso(ingreso.value, categoriaIngreso.value, idI.value);
     arrayIngresos.push(ingresa);
     mostrarItemI();
@@ -46,18 +53,18 @@ const formGastos = document.createElement("form");
 formGastos.innerHTML = `
 <fieldset>
     <h3>Nuevo gasto</h3>
-<label for="montoG">Monto $</label>
-<input id= "montoG" type="text">   
-<label for="categoryG">Categoría</label>
+<div><label for="montoG">Monto $</label>
+<input id= "montoG" type="text"></div>   
+<div><label for="categoryG">Categoría</label>
 <select name="categoryG" id="categoryG">
     <option value="Alimentos">Alimentos</option>
     <option value="Servicios">Servicios</option>
     <option value="Salud">Salud</option>
     <option value="Tarjetas">Tarjetas</option>
     <option value="Otra">Otra</option>
-</select>  
-<label for ="idG">ID</label>
-<input id="idG" type= "text" placeHolder="Ingrese Id a elección"> 
+</select></div>  
+<div><label for ="idG">ID</label>
+<input id="idG" type= "text" placeHolder="Ingrese Id a elección"></div> 
 <button id="ingresoG">Guardar</button>  
 </fieldset>  
 `;
@@ -71,6 +78,13 @@ botonGastos.onclick =
     let gasto = document.getElementById("montoG");
     let categoriaGasto = document.getElementById("categoryG");
     let id= document.getElementById("idG");
+    let check= arrayGastos.some((el) => el.id == id.value);
+    console.log(check);
+    if(check == true){
+      const myModal = new bootstrap.Modal(document.getElementById("modal-id"));
+      myModal.show(myModal);
+      return
+    }
     let ingresoGasto = new nuevoGasto(gasto.value, categoriaGasto.value, id.value);
     arrayGastos.push(ingresoGasto);
     localStorage.setItem("listaGastos", JSON.stringify(arrayGastos));

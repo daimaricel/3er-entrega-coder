@@ -43,14 +43,20 @@ header{
    
 }
 
-.forms div{
+.style{
     background-color: #118AB2;
     border: black 1px solid;
     padding-bottom: 1rem;
     padding-top: 1rem;
     margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
 }
 
+.style div{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
 #content{
     padding-top: 1rem;
 }
