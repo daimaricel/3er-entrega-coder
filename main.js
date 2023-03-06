@@ -1,4 +1,3 @@
-
 //Ingresos
 
 const divIngresos = document.getElementById("divIngresos");
@@ -22,7 +21,6 @@ formIngreso.innerHTML = `
 `;
 divIngresos.appendChild(formIngreso);
 
-
 let botonIngreso = document.getElementById("ingresoI");
 botonIngreso.onclick =
   ("submit",
@@ -31,14 +29,18 @@ botonIngreso.onclick =
     let ingreso = document.getElementById("montoI");
     let categoriaIngreso = document.getElementById("category");
     let idI = document.getElementById("idI");
-    let check= arrayIngresos.some((el) => el.id == idI.value);
+    let check = arrayIngresos.some((el) => el.id == idI.value);
     console.log(check);
-    if(check == true){
+    if (check == true) {
       const myModal = new bootstrap.Modal(document.getElementById("modal-id"));
       myModal.show(myModal);
-      return
+      return;
     }
-    let ingresa = new nuevoIngreso(ingreso.value, categoriaIngreso.value, idI.value);
+    let ingresa = new nuevoIngreso(
+      ingreso.value,
+      categoriaIngreso.value,
+      idI.value
+    );
     arrayIngresos.push(ingresa);
     mostrarItemI();
     localStorage.setItem("listaIngresos", JSON.stringify(arrayIngresos));
@@ -77,15 +79,19 @@ botonGastos.onclick =
     e.preventDefault();
     let gasto = document.getElementById("montoG");
     let categoriaGasto = document.getElementById("categoryG");
-    let id= document.getElementById("idG");
-    let check= arrayGastos.some((el) => el.id == id.value);
+    let id = document.getElementById("idG");
+    let check = arrayGastos.some((el) => el.id == id.value);
     console.log(check);
-    if(check == true){
+    if (check == true) {
       const myModal = new bootstrap.Modal(document.getElementById("modal-id"));
       myModal.show(myModal);
-      return
+      return;
     }
-    let ingresoGasto = new nuevoGasto(gasto.value, categoriaGasto.value, id.value);
+    let ingresoGasto = new nuevoGasto(
+      gasto.value,
+      categoriaGasto.value,
+      id.value
+    );
     arrayGastos.push(ingresoGasto);
     localStorage.setItem("listaGastos", JSON.stringify(arrayGastos));
     mostrarItemG();
@@ -95,12 +101,12 @@ botonGastos.onclick =
 
 //Saldo Actual
 let saldoActual;
-let saldoActualLs= localStorage.getItem("saldo");
+let saldoActualLs = localStorage.getItem("saldo");
 
-if(saldoActualLs){
-  saldoActual= saldoActualLs;
-}else{
-  saldoActual=0
+if (saldoActualLs) {
+  saldoActual = saldoActualLs;
+} else {
+  saldoActual = 0;
 }
 
 const divCentral = document.getElementById("divCentral");
@@ -117,21 +123,23 @@ saldoIndex.innerHTML = `
 divCentral.appendChild(saldoIndex);
 const parrafo = document.getElementById("sf");
 
-  function saldoFinal () {
- 
-  let totalIngresos = arrayIngresos.reduce((valorAnterior, valorActual) => valorAnterior + valorActual.ingreso, 0);
+function saldoFinal() {
+  let totalIngresos = arrayIngresos.reduce(
+    (valorAnterior, valorActual) => valorAnterior + valorActual.ingreso,
+    0
+  );
   let totalGastos = arrayGastos.reduce((valorAnterior, valorActual) => {
     return valorAnterior + valorActual.gasto;
   }, 0);
   const saldo = (a, b) => a - b;
   let saldoActual = saldo(totalIngresos, totalGastos);
-  localStorage.setItem ("saldo", saldoActual);
+  localStorage.setItem("saldo", saldoActual);
   parrafo.innerHTML = `$ ${saldoActual}`;
-};
+}
 
 let listaI = document.getElementById("listaI");
 
-   arrayIngresos.forEach((nuevoIngreso) => {
+arrayIngresos.forEach((nuevoIngreso) => {
   const liI = document.createElement("li");
   liI.innerHTML = `
 <div class= "listas"><img class= "estiloLista" src="../images/${nuevoIngreso.categoria}.png" alt="${nuevoIngreso.categoria}">
@@ -144,5 +152,3 @@ let listaI = document.getElementById("listaI");
     borrarItemI(nuevoIngreso.id);
   });
 });
-
-

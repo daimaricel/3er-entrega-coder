@@ -1,43 +1,41 @@
 //Constructor 1
 
 class nuevoIngreso {
-    constructor(ingreso, categoria, id) {
-      this.ingreso = parseInt(ingreso);
-      this.categoria = categoria;
-      this.id = id;
-    }
+  constructor(ingreso, categoria, id) {
+    this.ingreso = parseInt(ingreso);
+    this.categoria = categoria;
+    this.id = id;
   }
-  
-  let arrayIngresos;
-  let arrayIngresosJS =  JSON.parse(localStorage.getItem("listaIngresos"));
-  if (arrayIngresosJS){
-    arrayIngresos=arrayIngresosJS;
-  }else{
-    arrayIngresos=[]
+}
+
+let arrayIngresos;
+let arrayIngresosJS = JSON.parse(localStorage.getItem("listaIngresos"));
+if (arrayIngresosJS) {
+  arrayIngresos = arrayIngresosJS;
+} else {
+  arrayIngresos = [];
+}
+
+//Constructos 2
+
+class nuevoGasto {
+  constructor(gasto, categoria, id) {
+    this.gasto = parseInt(gasto);
+    this.categoria = categoria;
+    this.id = id;
   }
-  
-  //Constructos 2
-  
-  class nuevoGasto {
-    constructor(gasto, categoria, id) {
-      this.gasto = parseInt(gasto);
-      this.categoria = categoria;
-      this.id = id;
-    }
-  }
-  
-  let arrayGastos = [];
-  
-  if (localStorage.getItem("listaGastos")) {
-    arrayGastos = JSON.parse(localStorage.getItem("listaGastos"));
-  }
-  
-  
-  
-  //HTML en JS
-  
-  const section1 = document.getElementById("content");
-  section1.innerHTML = `
+}
+
+let arrayGastos = [];
+
+if (localStorage.getItem("listaGastos")) {
+  arrayGastos = JSON.parse(localStorage.getItem("listaGastos"));
+}
+
+//HTML en JS
+
+const section1 = document.getElementById("content");
+section1.innerHTML = `
   <div class="container" id="divCentral"></div>
   
   <div class="container forms">
@@ -45,8 +43,8 @@ class nuevoIngreso {
     <div class="container style" id="divGastos"></div>
   </div>
   `;
-  const section2 = document.getElementById("content2");
-  section2.innerHTML = `
+const section2 = document.getElementById("content2");
+section2.innerHTML = `
   <div class="accordion" id="accordionExample">
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingOne">
@@ -99,4 +97,3 @@ class nuevoIngreso {
       </div>
   
   `;
-  

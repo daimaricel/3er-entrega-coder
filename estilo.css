@@ -1,77 +1,76 @@
-body{
- background-color: #06D6A0;
+body {
+  background-color: #06d6a0;
 }
 .estiloLista {
-height: 1.5rem;
-width: 1.5rem;
+  height: 1.5rem;
+  width: 1.5rem;
 }
 
-.billetera{
-    height: 5rem;
-    width: 5rem;
+.billetera {
+  height: 5rem;
+  width: 5rem;
 }
 
-header{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #FFD166;
-    margin: 1 rem;
-    padding: 1rem;
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffd166;
+  margin: 1 rem;
+  padding: 1rem;
 }
 
-#divCentral{
-    background-color: #EF476F;
-    display: flex;
-    justify-content: center;
-    width: 450px;
-    margin-top: 2rem;
-    padding-top: 1rem;
+#divCentral {
+  background-color: #ef476f;
+  display: flex;
+  justify-content: center;
+  width: 450px;
+  margin-top: 2rem;
+  padding-top: 1rem;
 }
 
-#sf{
-    text-align: center;
-    background-color: antiquewhite;
-    font-weight: bolder;
+#sf {
+  text-align: center;
+  background-color: antiquewhite;
+  font-weight: bolder;
 }
 
-.forms{
-    display: flex;
-    margin-top: 2rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-   
+.forms {
+  display: flex;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
-.style{
-    background-color: #118AB2;
-    border: black 1px solid;
-    padding-bottom: 1rem;
-    padding-top: 1rem;
-    margin-left: 1rem;
-    display: flex;
-    flex-direction: column;
+.style {
+  background-color: #118ab2;
+  border: black 1px solid;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
-.style div{
-    padding-top: 5px;
-    padding-bottom: 5px;
+.style div {
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
-#content{
-    padding-top: 1rem;
-}
-
-.accordion-header{
-    background-color: #06D6A0;
+#content {
+  padding-top: 1rem;
 }
 
-.listas{
-    display: flex;
-    flex-direction: row;
+.accordion-header {
+  background-color: #06d6a0;
 }
 
-.bote{
-    height: 1rem;
-    width: 1rem;
-    align-items: flex-end;
+.listas {
+  display: flex;
+  flex-direction: row;
+}
+
+.bote {
+  height: 1rem;
+  width: 1rem;
+  align-items: flex-end;
 }
