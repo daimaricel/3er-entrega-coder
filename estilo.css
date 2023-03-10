@@ -4,11 +4,13 @@ body {
 .estiloLista {
   height: 1.5rem;
   width: 1.5rem;
+  margin-right: 1rem;
 }
 
 .billetera {
   height: 5rem;
   width: 5rem;
+  margin-right: 1rem
 }
 
 header {
@@ -28,6 +30,34 @@ header {
   margin-top: 2rem;
   padding-top: 1rem;
 }
+
+.tips{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  width: 450px;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  background-color: #ffd166;
+  padding-bottom: 1rem;
+  border-radius: 15px;
+}
+
+.tip{
+  display: flex;
+  flex-direction: column;
+  align-content: center; 
+  background-color: white;
+  border-radius: 15px;
+  padding-top: 1rem;
+  font-weight: 700;
+}
+
+.alinear{
+  display: flex;
+  align-self: center;
+}
+
 
 #sf {
   text-align: center;
@@ -58,6 +88,9 @@ header {
 }
 #content {
   padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .accordion-header {
@@ -72,5 +105,17 @@ header {
 .bote {
   height: 1rem;
   width: 1rem;
-  align-items: flex-end;
+  margin-top: 5px;
+}
+
+.botonEliminar{
+  border: none;
+  background-color: white;
+  display: flex;
+  align-content: end;
+  margin-left: 1rem;
+}
+
+.listado{
+  margin-bottom: 1rem;
 }

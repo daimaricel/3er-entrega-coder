@@ -36,7 +36,13 @@ if (localStorage.getItem("listaGastos")) {
 
 const section1 = document.getElementById("content");
 section1.innerHTML = `
+<div>
   <div class="container" id="divCentral"></div>
+  
+  <div class="container tips"><h4 class="alinear">Tips de finanzas personales</h4>
+  <div id="content3" class="tip"><p class="alinear">"Haz un presupuesto"</p></div>
+  </div>
+  
   
   <div class="container forms">
     <div class="container style" id="divIngresos"></div>
@@ -95,31 +101,39 @@ section2.innerHTML = `
           </div>
         </div>
       </div>
+
+      <div class="modal" id="modal-id" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">¡Lo sentimos!</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>Ese id ya fue utilizado, ingrese otro.</p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
   
   `;
 
-  //Div API
-
- /*  const api = "https://rapidapi.com/ghulam-jalani-ghulam-jalani-default/api/my-money-exchanger";
-
-  const divApi= document.getElementById("content3");
- */
-
-  /* const options = {
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': 'b10e278224msh3e6e9b8067e9afbp10bf6fjsnca7d20495d4e',
-      'X-RapidAPI-Host': 'my-money-exchanger.p.rapidapi.com'
-    }
-  };
-  
-  fetch('https://my-money-exchanger.p.rapidapi.com/convert?from=USD&to=BRL&amount=1', options)
-    .then(response => response.json())
-    .then(response => console.log(response))
-    .catch(err => console.error(err));
- */
-
-    
+  //Div fetch
     const rutaJson= "quotes.json";
 
     const frase = document.getElementById("content3");
@@ -129,7 +143,7 @@ section2.innerHTML = `
     .then( datos =>{
       setInterval( () =>{
       let indice= Math.floor(Math.random()*datos.length);
-      frase.innerHTML= `<p>"${datos[indice]}"</p>`
+      frase.innerHTML= `<p class="alinear">"${datos[indice]}"</p>`
     },7000)
   })
   .catch(error =>console.log(error))
