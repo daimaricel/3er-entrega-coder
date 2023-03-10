@@ -46,7 +46,10 @@ function borrarItemI(id) {
     text: "Item eliminado",
     duration: 2000,
     gravity: "bottom",
-    position: "right"
+    position: "right",
+    style: {
+      background: "#073B4C"
+    }
   }).showToast();
 }
 
@@ -93,6 +96,9 @@ function borrarItemG(id) {
     text: "Item eliminado",
     duration: 2000,
     gravity: "bottom",
-    position: "right"
+    position: "right",
+    style: {
+      background: "#073B4C"
+    }
   }).showToast();
 }

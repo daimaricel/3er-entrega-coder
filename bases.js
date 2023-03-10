@@ -97,3 +97,40 @@ section2.innerHTML = `
       </div>
   
   `;
+
+  //Div API
+
+ /*  const api = "https://rapidapi.com/ghulam-jalani-ghulam-jalani-default/api/my-money-exchanger";
+
+  const divApi= document.getElementById("content3");
+ */
+
+  /* const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': 'b10e278224msh3e6e9b8067e9afbp10bf6fjsnca7d20495d4e',
+      'X-RapidAPI-Host': 'my-money-exchanger.p.rapidapi.com'
+    }
+  };
+  
+  fetch('https://my-money-exchanger.p.rapidapi.com/convert?from=USD&to=BRL&amount=1', options)
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .catch(err => console.error(err));
+ */
+
+    
+    const rutaJson= "quotes.json";
+
+    const frase = document.getElementById("content3");
+
+    fetch(rutaJson)
+    .then( respuesta => respuesta.json())
+    .then( datos =>{
+      setInterval( () =>{
+      let indice= Math.floor(Math.random()*datos.length);
+      frase.innerHTML= `<p>"${datos[indice]}"</p>`
+    },7000)
+  })
+  .catch(error =>console.log(error))
+  .finally(() => console.log("listo"))
