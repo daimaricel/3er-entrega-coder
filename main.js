@@ -137,18 +137,4 @@ function saldoFinal() {
   parrafo.innerHTML = `$ ${saldoActual}`;
 }
 
-let listaI = document.getElementById("listaI");
 
-arrayIngresos.forEach((nuevoIngreso) => {
-  const liI = document.createElement("li");
-  liI.innerHTML = `
-<div class= "listas"><img class= "estiloLista" src="../images/${nuevoIngreso.categoria}.png" alt="${nuevoIngreso.categoria}">
-<p>Monto: $ ${nuevoIngreso.ingreso}, Categoría: ${nuevoIngreso.categoria}</p><button><img class= "bote" id="eliminar${nuevoIngreso.id}" src="images/bote-de-basura.png" alt="eliminar"></button></div>
-`;
-  listaI.appendChild(liI);
-
-  const elimino = document.getElementById(`eliminar${nuevoIngreso.id}`);
-  elimino.addEventListener("click", () => {
-    borrarItemI(nuevoIngreso.id);
-  });
-});
