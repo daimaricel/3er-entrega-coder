@@ -42,6 +42,12 @@ function borrarItemI(id) {
   saldoFinal();
   mostrarItemI();
   localStorage.setItem("listaIngresos", JSON.stringify(arrayIngresos));
+  Toastify ({
+    text: "Item eliminado",
+    duration: 2000,
+    gravity: "bottom",
+    position: "right"
+  }).showToast();
 }
 
 let listaG = document.getElementById("listaG");
@@ -83,4 +89,10 @@ function borrarItemG(id) {
   saldoFinal();
   mostrarItemG();
   localStorage.setItem("listaGastos", JSON.stringify(arrayIngresos));
+  Toastify ({
+    text: "Item eliminado",
+    duration: 2000,
+    gravity: "bottom",
+    position: "right"
+  }).showToast();
 }
