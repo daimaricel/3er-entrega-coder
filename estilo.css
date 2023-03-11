@@ -72,34 +72,31 @@ header {
   padding-bottom: 1rem;
 }
 
+#divGastos {
+  margin-left: 1rem;
+}
+
 /*Responsive forms*/
 
 @media (max-width: 799px) {
   .forms {
     display: flex;
     flex-direction: column;
-    margin: 1rem;
   }
 
   #divGastos {
     margin-top: 1rem;
-    margin-left: 1rem;
+    margin-left: 0%;
   }
 
   .style {
     display: flex;
-    align-items: center;
     justify-items: center;
   }
 
   .tips {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
-  }
-
-  #content {
-    display: flex;
-    justify-items: center;
   }
 }
 
@@ -108,7 +105,6 @@ header {
   border: none 1px solid;
   padding-bottom: 1rem;
   padding-top: 1rem;
-  margin-left: 1rem;
   display: flex;
   flex-direction: column;
 }
@@ -123,10 +119,6 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.accordion-header {
-  background-color: #06d6a0;
 }
 
 .listas {
