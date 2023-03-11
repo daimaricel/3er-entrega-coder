@@ -42,14 +42,14 @@ function borrarItemI(id) {
   saldoFinal();
   mostrarItemI();
   localStorage.setItem("listaIngresos", JSON.stringify(arrayIngresos));
-  Toastify ({
+  Toastify({
     text: "Item eliminado",
     duration: 2000,
     gravity: "bottom",
     position: "right",
     style: {
-      background: "#073B4C"
-    }
+      background: "#073B4C",
+    },
   }).showToast();
 }
 
@@ -58,7 +58,7 @@ let listaG = document.getElementById("listaG");
 arrayGastos.forEach((nuevoGasto) => {
   const liG = document.createElement("li");
   liG.innerHTML = `
-  <div class= "listas"><img class= "estiloLista" src="../images/${nuevoGasto.categoria}.png" alt="${nuevoGasto.categoria}">
+  <div class= "listas"><img class= "estiloLista" src="images/${nuevoGasto.categoria}.png" alt="${nuevoGasto.categoria}">
   <p>Monto: $ ${nuevoGasto.gasto}, Categoría: ${nuevoGasto.categoria}</p><button class="botonEliminar"><img class= "bote" id="eliminar${nuevoGasto.id}" src="images/bote-de-basura.png" alt="eliminar"></button></div>
   `;
   listaG.appendChild(liG);
@@ -92,13 +92,13 @@ function borrarItemG(id) {
   saldoFinal();
   mostrarItemG();
   localStorage.setItem("listaGastos", JSON.stringify(arrayIngresos));
-  Toastify ({
+  Toastify({
     text: "Item eliminado",
     duration: 2000,
     gravity: "bottom",
     position: "right",
     style: {
-      background: "#073B4C"
-    }
+      background: "#073B4C",
+    },
   }).showToast();
 }

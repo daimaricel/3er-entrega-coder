@@ -6,7 +6,7 @@ formIngreso.innerHTML = `
 <fieldset>
     <h3>Nuevo ingreso</h3>
 <div><label for="montoI">Monto $</label>
-<input id= "montoI" type="text" required></div>  
+<input id= "montoI" type="number" required></div>  
 <div><label for="category">Categoría</label>
 <select name="category" id="category">
     <option value="Salario">Salario</option>
@@ -15,8 +15,8 @@ formIngreso.innerHTML = `
     <option value="Otra">Otra</option>
 </select></div> 
 <div><label for ="idI">ID</label>
-<input id="idI" type= "text" placeHolder="Ingrese Id a elección" required></div> 
-<button id="ingresoI">Guardar</button>  
+<input id="idI" required type= "text" placeHolder="Ingrese Id a elección"></div> 
+<button id="ingresoI" type="submit">Guardar</button>  
 </fieldset>  
 `;
 divIngresos.appendChild(formIngreso);
@@ -24,7 +24,7 @@ divIngresos.appendChild(formIngreso);
 let botonIngreso = document.getElementById("ingresoI");
 botonIngreso.onclick =
   ("submit",
-  (e) => {
+  function (e) {
     e.preventDefault();
     let ingreso = document.getElementById("montoI");
     let categoriaIngreso = document.getElementById("category");
@@ -56,7 +56,7 @@ formGastos.innerHTML = `
 <fieldset>
     <h3>Nuevo gasto</h3>
 <div><label for="montoG">Monto $</label>
-<input id= "montoG" type="text"></div>   
+<input id= "montoG" type="number"></div>   
 <div><label for="categoryG">Categoría</label>
 <select name="categoryG" id="categoryG">
     <option value="Alimentos">Alimentos</option>
@@ -66,8 +66,8 @@ formGastos.innerHTML = `
     <option value="Otra">Otra</option>
 </select></div>  
 <div><label for ="idG">ID</label>
-<input id="idG" type= "text" placeHolder="Ingrese Id a elección"></div> 
-<button id="ingresoG">Guardar</button>  
+<input id="idG" required type= "text" placeHolder="Ingrese Id a elección"></div> 
+<button id="ingresoG" type="submit">Guardar</button>  
 </fieldset>  
 `;
 divGastos.appendChild(formGastos);
@@ -136,5 +136,3 @@ function saldoFinal() {
   localStorage.setItem("saldo", saldoActual);
   parrafo.innerHTML = `$ ${saldoActual}`;
 }
-
-

@@ -10,7 +10,7 @@ body {
 .billetera {
   height: 5rem;
   width: 5rem;
-  margin-right: 1rem
+  margin-right: 1rem;
 }
 
 header {
@@ -20,6 +20,7 @@ header {
   background-color: #ffd166;
   margin: 1 rem;
   padding: 1rem;
+  object-fit: cover;
 }
 
 #divCentral {
@@ -31,7 +32,7 @@ header {
   padding-top: 1rem;
 }
 
-.tips{
+.tips {
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -43,21 +44,20 @@ header {
   border-radius: 15px;
 }
 
-.tip{
+.tip {
   display: flex;
   flex-direction: column;
-  align-content: center; 
+  align-content: center;
   background-color: white;
   border-radius: 15px;
   padding-top: 1rem;
   font-weight: 700;
 }
 
-.alinear{
+.alinear {
   display: flex;
   align-self: center;
 }
-
 
 #sf {
   text-align: center;
@@ -72,9 +72,40 @@ header {
   padding-bottom: 1rem;
 }
 
+/*Responsive forms*/
+
+@media (max-width: 799px) {
+  .forms {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+  }
+
+  #divGastos {
+    margin-top: 1rem;
+    margin-left: 1rem;
+  }
+
+  .style {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .tips {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
+  #content {
+    display: flex;
+    justify-items: center;
+  }
+}
+
 .style {
   background-color: #118ab2;
-  border: black 1px solid;
+  border: none 1px solid;
   padding-bottom: 1rem;
   padding-top: 1rem;
   margin-left: 1rem;
@@ -86,6 +117,7 @@ header {
   padding-top: 5px;
   padding-bottom: 5px;
 }
+
 #content {
   padding-top: 1rem;
   display: flex;
@@ -108,7 +140,7 @@ header {
   margin-top: 5px;
 }
 
-.botonEliminar{
+.botonEliminar {
   border: none;
   background-color: white;
   display: flex;
@@ -116,6 +148,24 @@ header {
   margin-left: 1rem;
 }
 
-.listado{
+.listado {
   margin-bottom: 1rem;
+}
+
+/*Modal*/
+
+.botonM {
+  background-color: #ef476f;
+  color: black;
+  font-weight: bold;
+}
+
+.modal-body {
+  text-align: center;
+  font-weight: bold;
+  background-color: aliceblue;
+}
+
+.modalB {
+  background-color: #ffd166;
 }

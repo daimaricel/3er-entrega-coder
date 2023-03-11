@@ -105,46 +105,44 @@ section2.innerHTML = `
       <div class="modal" id="modal-id" tabindex="-1">
       <div class="modal-dialog">
         <div class="modal-content">
-          <div class="modal-header">
+          <div class="modal-header modalB">
             <h4 class="modal-title">¡Lo sentimos!</h4>
             <button
               type="button"
               class="btn-close"
               data-bs-dismiss="modal"
-              aria-label="Close"
+              aria-label="close"
             ></button>
           </div>
           <div class="modal-body">
             <p>Ese id ya fue utilizado, ingrese otro.</p>
           </div>
-          <div class="modal-footer">
+          <div class="modal-footer modalB">
             <button
               type="button"
-              class="btn btn-secondary"
+              class="btn btn-secondary botonM"
               data-bs-dismiss="modal"
             >
-              Close
+              Cerrar
             </button>
           </div>
         </div>
       </div>
     </div>
-
-  
   `;
 
-  //Div fetch
-    const rutaJson= "quotes.json";
+//Div fetch
+const rutaJson = "quotes.json";
 
-    const frase = document.getElementById("content3");
+const frase = document.getElementById("content3");
 
-    fetch(rutaJson)
-    .then( respuesta => respuesta.json())
-    .then( datos =>{
-      setInterval( () =>{
-      let indice= Math.floor(Math.random()*datos.length);
-      frase.innerHTML= `<p class="alinear">"${datos[indice]}"</p>`
-    },7000)
+fetch(rutaJson)
+  .then((respuesta) => respuesta.json())
+  .then((datos) => {
+    setInterval(() => {
+      let indice = Math.floor(Math.random() * datos.length);
+      frase.innerHTML = `<p class="alinear">"${datos[indice]}"</p>`;
+    }, 7000);
   })
-  .catch(error =>console.log(error))
-  .finally(() => console.log("listo"))
+  .catch((error) => console.log(error))
+  .finally(() => console.log("listo"));
