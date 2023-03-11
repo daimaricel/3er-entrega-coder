@@ -74,7 +74,7 @@ function mostrarItemG() {
       const liG = document.createElement("li");
       liG.innerHTML = `
       <div class= "listas"><img class= "estiloLista" src="images/${nuevoGasto.categoria}.png" alt="${nuevoGasto.categoria}">
-      <p>Monto: $ ${nuevoGasto.gasto}, Categoría: ${nuevoGasto.categoria}</p><button><img class= "bote" id="eliminar${nuevoGasto.id}" src="images/bote-de-basura.png" alt="eliminar"></button></div>
+      <p>Monto: $ ${nuevoGasto.gasto}, Categoría: ${nuevoGasto.categoria}</p><button class="botonEliminar"><img class= "bote" id="eliminar${nuevoGasto.id}" src="images/bote-de-basura.png" alt="eliminar"></button></div>
       `;
       listaG.appendChild(liG);
       const elimino = document.getElementById(`eliminar${nuevoGasto.id}`);
